@@ -42,23 +42,27 @@
          <hr>
          <h3>캐리어 내부 상태를 한눈에 파악할 수 있는 스마트 캐리어 시스템 </h3>
         <hr>
-        <form id="subscribe-form">
+       <h4>캐리어 내부 온도, 습도, 여유공간 확인</h4> 
+	<form id="subscribe-form">
                 <input type="button" onclick="subscribe('ultrasonic')" value="여유공간 시작">
                 <input type="button" onclick="unsubscribe('ultrasonic')" value="여유공간 중단">
         	  <input type="button" onclick="subscribe('temperature')" value="온도 시작">
                 <input type="button" onclick="unsubscribe('temperature')" value="온도 중단">
                 <input type="button" onclick="subscribe('humidity')" value="습도 시작">
                 <input type="button" onclick="unsubscribe('humidity')" value="습도 중단">
-         <input type="button" onclick="subscribe('zodo')" value="측정시작">
-         <input type="button" onclick="unsubscribe('zodo')" value="측정중단">
        <hr>	
-       <h2>캐리어 내부 상태 확인<h3>
-        <input type="button" onclick="startCamera()" value="카메라시작">
+ 	 <h4>캐리어 내부 상태 CCTV<h4>	
+	<input type="button" onclick="startCamera()" value="카메라시작">
         <input type="button" onclick="stopCamera()" value="카메라중지">
         </form>
          <canvas id="myCanvas" width="320" height="240"></canvas>
        <hr>
-         <div id="messages"></div>
+        <h4>캐리어 오픈 여부 확인</h4>
+         		<input type="button" onclick="subscribe('zodo')" value="체크시작">
+        		 <input type="button" onclick="unsubscribe('zodo')" value="체크중단">
+	<hr>
+
+	 <div id="messages"></div>
           <div class="chart-container">
         <canvas id="canvas1" width="600" height="400"></canvas>
         <canvas id="canvas2" width="600" height="400"></canvas>
