@@ -60,22 +60,31 @@ function onConnectionLost(responseObject) { // responseObject는 응답 패킷
 function onMessageArrived(msg) { // 매개변수 msg는 도착한 MQTT 메시지를 담고 있는 객체
   //console.log("onMessageArrived: " + msg.payloadString);
   // 도착한 메시지 출력
-  if(msg.destinationName != "image"){
-    if(msg.destinationName == "ultrasonic"){
-   	 addChart1Data(parseFloat(msg.payloadString));
+    if(msg.destinationName != "image"){
+        if(msg.destinationName == "ultrasonic"){
+   	     addChart1Data(parseFloat(msg.payloadString));
+        } 
+        else if(msg.destinationName == "temperature"){
+   	     addChart2Data(parseFloat(msg.payloadString));
+        }
+        else if(msg.destinationName == "humidity"){
+   	     addChart3Data(parseFloat(msg.payloadString));
+        }
+
+        else if(msg.destinationName == "zodo"){
+	    if(parseFloat(msg.payloadString) < 10){
+		document.getElementById("messages").innerHTML = '<span>캐리어가 닫혀있음</span><br/>';
+	    }
+	    else{  
+		document.getElementById("messages").innerHTML = '<span>캐리어가 열려있음</span>';
+	    }
+        }
     }
-    else if(msg.destinationName == "temperature"){
-   	 addChart2Data(parseFloat(msg.payloadString));
+    else if(msg.destinationName == "image"){
+         drawImage(msg.payloadBytes);
     }
-    else if(msg.destinationName == "humidity"){
-   	 addChart3Data(parseFloat(msg.payloadString));
-    }
-  
-  }
-  else if(msg.destinationName == "image"){
-      drawImage(msg.payloadBytes);
-  }
 }
+
 // disconnection 버튼이 선택되었을 때 호출되는 함수
 function disconnect() {
   if(connectionFlag == false)
