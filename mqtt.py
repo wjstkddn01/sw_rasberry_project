@@ -47,14 +47,6 @@ while True:
 
 		client.publish("image", stream.getvalue(), qos=0) # image토픽으로 이미지 데이터 전송
 		stream.truncate() # stream 파일에 있는 모든 내용을 지운다
-		distance = ultrasonic.measureDistance() # 초음파 센서로부터 거리 읽기
-		client.publish("ultrasonic", distance, qos=0) # “ultrasonic” 토픽으로 거리 전송
-		temperature = htu.getTemperature(htu.sensor)
-		client.publish("temperature", temperature, qos=0)
-		humidity = htu.getHumidity(htu.sensor)
-		client.publish("humidity",  humidity, qos=0)
-		zodo = cds.getcds()
-		client.publish("zodo", zodo , qos=0) 
 	else:
 		distance = ultrasonic.measureDistance() # 초음파 센서로부터 거리 읽기
 		client.publish("ultrasonic", distance, qos=0) # “ultrasonic” 토픽으로 거리 전송
