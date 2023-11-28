@@ -210,7 +210,7 @@ function hideshow() { // 캔버스 보이기 숨기기
                 canvas3.style.display = "inline-block"; // canvas 객체를 보이게 배치
         else
                 canvas3.style.display = "none" ;  // canvas 객체를 보이지 않게 배치
-
+}
 window.addEventListener("load", drawChart1); // load 이벤트가 발생하면 drawChart() 호출하도록 등록
 window.addEventListener("load", drawChart2); // load 이벤트가 발생하면 drawChart() 호출하도록 등록
 window.addEventListener("load", drawChart3); // load 이벤트가 발생하면 drawChart() 호출하도록 등록

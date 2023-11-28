@@ -61,9 +61,16 @@ function onMessageArrived(msg) { // 매개변수 msg는 도착한 MQTT 메시지
   //console.log("onMessageArrived: " + msg.payloadString);
   // 도착한 메시지 출력
   if(msg.destinationName != "image"){
- 	addChart1Data(parseFloat(msg.payloadString)); 
-        addChart2Data(parseFloat(msg.payloadString));
-	addChart3Data(parseFloat(msg.payloadString)); 
+    if(msg.destinationName == "ultrasonic"){
+   	 addChart1Data(parseFloat(msg.payloadString));
+    }
+    else if(msg.destinationName == "temperature"){
+   	 addChart2Data(parseFloat(msg.payloadString));
+    }
+    else if(msg.destinationName == "humidity"){
+   	 addChart3Data(parseFloat(msg.payloadString));
+    }
+  
   }
   else if(msg.destinationName == "image"){
       drawImage(msg.payloadBytes);
